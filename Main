@@ -1,0 +1,54 @@
+package me.Toddkk02;
+
+import Event.OnClickGui;
+import Event.OnSellGui;
+import Event.OnbuyGui;
+import Event.VillagerRightClickEvent;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Villager;
+
+import org.bukkit.plugin.java.JavaPlugin;
+
+    public class Main extends JavaPlugin {
+    //Get the world where i want the Villager trader spawn...    
+    
+    World world = Bukkit.getServer().getWorld("world");
+    //coordinates of the spawn
+    Location VillagerShop = new Location(world, 2, 62, 204);
+    private Villager villager;
+
+    @Override
+    public void onEnable(){
+        System.out.println("GuiShopVillager Attivato");
+
+        getServer().getPluginManager().registerEvents(new VillagerRightClickEvent(), this);
+        getServer().getPluginManager().registerEvents(new OnClickGui(), this);
+        getServer().getPluginManager().registerEvents(new OnSellGui(), this);
+        getServer().getPluginManager().registerEvents(new OnbuyGui(), this);
+
+        //effective spawn of the villager
+        villager = (Villager) Bukkit.getWorld("world").spawnEntity(VillagerShop, EntityType.VILLAGER);
+        villager.setCustomName(ChatColor.GOLD+"COMMESSO");
+        villager.setCustomNameVisible(true);
+    }
+
+    @Override
+    public void onDisable() {
+        System.out.println("guiShopVillager Disattivato");
+        //remove the villager when server closing Function
+        removeVillager();
+    }
+
+    public void removeVillager() {
+      // inside the function
+        if (villager != null) {
+            villager.remove();
+            villager = null;
+        }
+    }
+}
