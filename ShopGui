@@ -1,0 +1,41 @@
+package Gui;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
+//creating the shop GUI
+public class ShopGui {
+    private Player player;
+    public ShopGui(Player player){
+        this.player = player;
+    }
+
+    public ItemStack createbutton(Material id, short data, int amount, List<String> lore, String display){
+        ItemStack item = new ItemStack(id, amount, data);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(display);
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+        return item;
+
+
+    }
+
+    public void open(){
+        Inventory inventory = Bukkit.createInventory(null, 9, ChatColor.GOLD+"SHOP");
+        player.openInventory(inventory);
+        // two option
+        inventory.setItem(1, createbutton(Material.WOOL, (short)13, 1, new ArrayList<String>(), ChatColor.GOLD+"VENDI")); //Sell
+        inventory.setItem(6, createbutton(Material.WOOL, (short)14, 1, new ArrayList<String>(), ChatColor.GOLD+"COMPRA")); //Buy
+
+
+    }
+
+}
