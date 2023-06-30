@@ -1,0 +1,108 @@
+package Gui;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SellGui implements Listener {
+    private Player player;
+
+    public SellGui(Player player) {
+        this.player = player;
+
+    }
+    //list of lore about item to sell
+    public void open() {
+        List<String> cobblestoneSell = new ArrayList<>();
+        List<String> dirtSell = new ArrayList<>();
+        List<String> stoneSell = new ArrayList<>();
+        List<String> ironSell = new ArrayList<>();
+        List<String> goldSell = new ArrayList<>();
+        List<String> redstoneSell = new ArrayList<>();
+        List<String> diamondSell = new ArrayList<>();
+        List<String> emeraldSell = new ArrayList<>();
+        List<String> cactusSell = new ArrayList<>();
+        List<String> wheatSell = new ArrayList<>();
+        List<String> carrotSell = new ArrayList<>();
+        List<String> potatoSell = new ArrayList<>();
+        List<String> boneSell = new ArrayList<>();
+        List<String> rottenFleshSell = new ArrayList<>();
+        List<String> spiderEyeSell = new ArrayList<>();
+        List<String> stringSell = new ArrayList<>();
+        List<String> gunPowderSell = new ArrayList<>();
+        List<String> sugarCaneSell = new ArrayList<>();
+        
+        //desciption of Lore 
+        cobblestoneSell.add(ChatColor.GREEN + "Vendi 64 di Pietrisco per 50$");
+        dirtSell.add(ChatColor.GREEN + "Vendi 64 di Terra per 25$");
+        stoneSell.add(ChatColor.GREEN + "Vendi 64 di Pietra per 100$");
+        ironSell.add(ChatColor.GREEN + "Vendi 16 di Ferro per 200$");
+        goldSell.add(ChatColor.GREEN + "Vendi 16 di Oro per 500$");
+        redstoneSell.add(ChatColor.GREEN + "Vendi 16 di RedStone per 300$");
+        diamondSell.add(ChatColor.GREEN + "Vendi 8 Diamanti per 600$");
+        emeraldSell.add(ChatColor.GREEN + "Vendi 8 Smeraldi per 800$");
+        cactusSell.add(ChatColor.GREEN + "Vendi 16 Cactus per 40$");
+        wheatSell.add(ChatColor.GREEN + "Vendi 16 di Grano per 25");
+        carrotSell.add(ChatColor.GREEN + "Vendi 16 Carote per 35$");
+        potatoSell.add(ChatColor.GREEN + "16 Patate per 35$");
+        sugarCaneSell.add(ChatColor.GREEN + "Vendi 16 Canne da Zucchero per 45$");
+        boneSell.add(ChatColor.GREEN + "Vendi 8 Ossa per 60$");
+        rottenFleshSell.add(ChatColor.GREEN + "Vendi 8 di Carne Marcia per 60$");
+        spiderEyeSell.add(ChatColor.GREEN + "Vendi 8 Occhi di Ragno per 60$");
+        stringSell.add(ChatColor.GREEN + "Vendi 8 Stringhe per 60$");
+
+        //Creation of the GUI
+        Inventory inventory = Bukkit.createInventory(null, 36, ChatColor.DARK_PURPLE + "VENDI I PRODOTTI");
+        player.openInventory(inventory);
+        inventory.setItem(1, createButton(Material.COBBLESTONE, (short) 1, 1, cobblestoneSell, ChatColor.GOLD + "Pietrisco"));
+        inventory.setItem(2, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(3, createButton(Material.DIRT, (short) 1, 1, dirtSell, ChatColor.GOLD + "Terra"));
+        inventory.setItem(4, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(5, createButton(Material.STONE, (short) 2, 1, stoneSell, ChatColor.GOLD + "Pietra"));
+        inventory.setItem(6, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(7, createButton(Material.IRON_INGOT, (short) 0, 1, ironSell, ChatColor.GOLD + "Ferro"));
+        inventory.setItem(8, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(9, createButton(Material.GOLD_INGOT, (short) 0, 1, goldSell, ChatColor.GOLD + "Oro"));
+        inventory.setItem(10, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(11, createButton(Material.REDSTONE, (short) 0, 1, redstoneSell, ChatColor.GOLD + "RedStone"));
+        inventory.setItem(12, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(13, createButton(Material.DIAMOND, (short) 0, 1, diamondSell, ChatColor.GOLD + "Diamante"));
+        inventory.setItem(14, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(15, createButton(Material.EMERALD, (short) 0, 1, emeraldSell, ChatColor.GOLD + "Smeraldo"));
+        inventory.setItem(16, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(17, createButton(Material.CACTUS, (short) 1, 1, cactusSell, ChatColor.GOLD + "Cactus"));
+        inventory.setItem(18, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(19, createButton(Material.WHEAT, (short) 0, 1, wheatSell, ChatColor.GOLD + "Grano"));
+        inventory.setItem(20, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(21, createButton(Material.CARROT, (short) 0, 1, carrotSell, ChatColor.GOLD + "Carota"));
+        inventory.setItem(22, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(23, createButton(Material.POTATO, (short) 0, 1, potatoSell, ChatColor.GOLD + "Patata"));
+        inventory.setItem(24, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(25, createButton(Material.SUGAR_CANE, (short) 0, 1, sugarCaneSell, ChatColor.GOLD + "Canne da Zucchero"));
+        inventory.setItem(26, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(27, createButton(Material.BONE, (short) 0, 1, boneSell, ChatColor.GOLD + "Osso"));
+        inventory.setItem(28, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(29, createButton(Material.ROTTEN_FLESH, (short) 0, 1, rottenFleshSell, ChatColor.GOLD + "Carne Marcia"));
+        inventory.setItem(30, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(31, createButton(Material.SPIDER_EYE, (short) 0, 1, spiderEyeSell, ChatColor.GOLD + "Occhio di Ragno"));
+        inventory.setItem(32, createButton(Material.STAINED_GLASS_PANE, (short) 15, 1, new ArrayList<>(), ChatColor.BLACK + "VENDI"));
+        inventory.setItem(33, createButton(Material.STRING, (short) 0, 1, stringSell, ChatColor.GOLD + "Stringhe"));
+    }
+    //Constructor of GUI
+    private ItemStack createButton(Material material, short data, int amount, List<String> lore, String name) {
+        ItemStack item = new ItemStack(material, amount, data);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(name);
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+        return item;
+    }
+}
