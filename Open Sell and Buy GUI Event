@@ -1,0 +1,50 @@
+//Click on GUI Shop event
+package Event;
+
+import Gui.BuyGui;
+import Gui.SellGui;
+import org.bukkit.ChatColor;
+import org.bukkit.World;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+
+public class OnClickGui implements Listener {
+    @EventHandler
+    public void onClick(InventoryClickEvent event) {
+        if(event.getCurrentItem()== null){
+            return;
+        }
+        if (!(event.getWhoClicked() instanceof Player)) {
+            return;
+        }
+        Player player = (Player) event.getWhoClicked();
+
+        World world = player.getWorld();
+
+        if (event.getCurrentItem() == null) {
+            return;
+        }
+
+        if (event.getClickedInventory().getTitle().equalsIgnoreCase(ChatColor.GOLD + "SHOP")) {
+            event.setCancelled(true);
+            //switch case to control what item was selected
+            switch (event.getSlot()){
+                case 1:
+                    player.closeInventory();
+                    SellGui sell = new SellGui(player);
+                    //open Sell GUI
+                    sell.open();
+                    break;
+
+                case 6:
+                    player.closeInventory();
+                    BuyGui buy = new BuyGui(player);
+                    //open Buy GUI
+                    buy.open();
+                    break;
+            }
+        }
+    }
+}
