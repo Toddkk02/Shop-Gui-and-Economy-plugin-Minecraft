@@ -1,0 +1,275 @@
+ackage Event;
+
+import Eco.Economy;
+import me.todd.Main;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
+
+public class OnSellGui implements Listener {
+    private Economy economy;
+
+
+    public OnSellGui() {
+        
+        this.economy = new Economy(null, 10.0);
+    }
+
+    @EventHandler
+    public void onSell(InventoryClickEvent event) {
+        if (event.getCurrentItem() == null) {
+            return;
+        }
+        if (!(event.getWhoClicked() instanceof Player)) {
+            return;
+        }
+        if (event.getClickedInventory().getTitle().equalsIgnoreCase(ChatColor.DARK_PURPLE+"VENDI I PRODOTTI")) {
+            event.setCancelled(true);
+            //selling item logic
+            switch (event.getSlot()) {
+                case 1:
+                    Player player = (Player) event.getWhoClicked();
+                    int cobblestoneAmount = 64;
+                    double sellValue = 50;
+                    ItemStack cobblestoneStack = new ItemStack(Material.COBBLESTONE, cobblestoneAmount);
+                    if (player.getInventory().containsAtLeast(cobblestoneStack, cobblestoneAmount)) {
+                        player.getInventory().removeItem(cobblestoneStack);
+                        Economy economy = new Economy(player, sellValue);
+                        economy.addBalance();
+                        player.sendMessage(ChatColor.GREEN + "Hai venduto 64 blocchi di Pietrisco con successo!");
+                    } else {
+                        player.sendMessage(ChatColor.RED + "Non hai abbastanza Pietrisco da vendere!");
+                    }
+                    break;
+                case 3:
+                    Player player1 = (Player) event.getWhoClicked();
+                    int dirtAmount = 64;
+                    double sellValue1 = 25;
+                    ItemStack dirtStack = new ItemStack(Material.DIRT, dirtAmount);
+                    if (player1.getInventory().containsAtLeast(dirtStack, dirtAmount)) {
+                        player1.getInventory().removeItem(dirtStack);
+                        Economy economy = new Economy(player1, sellValue1);
+                        economy.addBalance();
+                        player1.sendMessage(ChatColor.GREEN + "Hai venduto 64 blocchi di Dirt con successo!");
+                    } else {
+                        player1.sendMessage(ChatColor.RED + "Non hai abbastanza dirt da vendere!");
+                    }
+                    break;
+                case 5:
+                    Player player2 = (Player) event.getWhoClicked();
+                    int stoneamount = 64;
+                    double sellValue2 = 100;
+                    ItemStack stoneStack = new ItemStack(Material.STONE, stoneamount);
+                    if (player2.getInventory().containsAtLeast(stoneStack, stoneamount)) {
+                        player2.getInventory().removeItem(stoneStack);
+                        Economy economy = new Economy(player2, sellValue2);
+                        economy.addBalance();
+                        player2.sendMessage(ChatColor.GREEN + "Hai venduto 64 blocchi di Pietra con per successo per "+ sellValue2 + "$!");
+                    } else {
+                        player2.sendMessage(ChatColor.RED + "Non hai abbastanza Pietra da vendere!");
+                    }
+                    break;
+                case 7:
+                    Player player3 = (Player) event.getWhoClicked();
+                    int ironamount = 16;
+                    double sellValue3 = 200;
+                    ItemStack ironstack = new ItemStack(Material.IRON_INGOT, ironamount);
+                    if (player3.getInventory().containsAtLeast(ironstack, ironamount)) {
+                        player3.getInventory().removeItem(ironstack);
+                        Economy economy = new Economy(player3, sellValue3);
+                        economy.addBalance();
+                        player3.sendMessage(ChatColor.GREEN + "Hai venduto 16 lingotti di Ferro con successo per "+ sellValue3+ "$!");
+                    } else {
+                        player3.sendMessage(ChatColor.RED + "Non hai abbastanza Pietra da vendere!");
+                    }
+                    break;
+                case 9:
+                    Player player4 = (Player) event.getWhoClicked();
+                    int goldAmount = 16;
+                    double sellValue4 = 500;
+                    ItemStack goldStack = new ItemStack(Material.GOLD_INGOT, goldAmount);
+                    if (player4.getInventory().containsAtLeast(goldStack, goldAmount)) {
+                        player4.getInventory().removeItem(goldStack);
+                        Economy economy = new Economy(player4, sellValue4);
+                        economy.addBalance();
+                        player4.sendMessage(ChatColor.GREEN + "Hai venduto 16 lingotti di Oro con successo per "+ sellValue4 + "$!");
+                    } else {
+                        player4.sendMessage(ChatColor.RED + "Non hai abbastanza Oro da vendere!");
+                    }
+                    break;
+                case 11:
+                    Player player5 = (Player) event.getWhoClicked();
+                    int redstoneAmount = 16;
+                    double sellValue5 = 300;
+                    ItemStack redstoneStack = new ItemStack(Material.REDSTONE, redstoneAmount);
+                    if (player5.getInventory().containsAtLeast(redstoneStack, redstoneAmount)) {
+                        player5.getInventory().removeItem(redstoneStack);
+                        Economy economy = new Economy(player5, sellValue5);
+                        economy.addBalance();
+                        player5.sendMessage(ChatColor.GREEN + "Hai venduto 16 blocchi di RedStone con successo per "+ sellValue5 + "$!");
+                    } else {
+                        player5.sendMessage(ChatColor.RED + "Non hai abbastanza RedStone da vendere!");
+                    }
+                    break;
+                case 13:
+                    Player player6 = (Player) event.getWhoClicked();
+                    int diamondAmount = 8;
+                    double sellValue6 = 600;
+                    ItemStack diamondStack = new ItemStack(Material.DIAMOND, diamondAmount);
+                    if (player6.getInventory().containsAtLeast(diamondStack, diamondAmount)) {
+                        player6.getInventory().removeItem(diamondStack);
+                        Economy economy = new Economy(player6, sellValue6);
+                        economy.addBalance();
+                        player6.sendMessage(ChatColor.GREEN + "Hai venduto 8 Diamanti con successo per "+ sellValue6 + "$!");
+                    } else {
+                        player6.sendMessage(ChatColor.RED + "Non hai abbastanza Diamanti da vendere!");
+                    }
+                    break;
+                case 15:
+                    Player player7 = (Player) event.getWhoClicked();
+                    int emeraldAmount = 8;
+                    double sellValue7 = 800;
+                    ItemStack emeraldStack = new ItemStack(Material.EMERALD, emeraldAmount);
+                    if (player7.getInventory().containsAtLeast(emeraldStack, emeraldAmount)) {
+                        player7.getInventory().removeItem(emeraldStack);
+                        Economy economy = new Economy(player7, sellValue7);
+                        economy.addBalance();
+                        player7.sendMessage(ChatColor.GREEN + "Hai venduto 8 Smeraldi con successo per "+ sellValue7 + "$!");
+                    } else {
+                        player7.sendMessage(ChatColor.RED + "Non hai abbastanza Smeraldi da vendere!");
+                    }
+                    break;
+                case 17:
+                    Player player8 = (Player) event.getWhoClicked();
+                    int cactusAmount = 16;
+                    double sellValue8 = 40;
+                    ItemStack cactusStack = new ItemStack(Material.CACTUS, cactusAmount);
+                    if (player8.getInventory().containsAtLeast(cactusStack, cactusAmount)) {
+                        player8.getInventory().removeItem(cactusStack);
+                        Economy economy = new Economy(player8, sellValue8);
+                        economy.addBalance();
+                        player8.sendMessage(ChatColor.GREEN + "Hai venduto 16 Cactus con successo per "+ sellValue8 + "$!");
+                    } else {
+                        player8.sendMessage(ChatColor.RED + "Non hai abbastanza Cactus da vendere!");
+                    }
+                    break;
+                case 19:
+                    Player player9 = (Player) event.getWhoClicked();
+                    int wheatAmount = 16;
+                    double sellValue9 = 25;
+                    ItemStack wheatStack = new ItemStack(Material.WHEAT, wheatAmount);
+                    if (player9.getInventory().containsAtLeast(wheatStack, wheatAmount)) {
+                        player9.getInventory().removeItem(wheatStack);
+                        Economy economy = new Economy(player9, sellValue9);
+                        economy.addBalance();
+                        player9.sendMessage(ChatColor.GREEN + "Hai venduto 16 blocchi di Grano con successo per "+ sellValue9 + "$!");
+                    } else {
+                        player9.sendMessage(ChatColor.RED + "Non hai abbastanza Grano da vendere!");
+                    }
+                    break;
+                case 21:
+                    Player player10 = (Player) event.getWhoClicked();
+                    int carrotAmount = 16;
+                    double sellValue10 = 35;
+                    ItemStack carrotStack = new ItemStack(Material.CARROT, carrotAmount);
+                    if (player10.getInventory().containsAtLeast(carrotStack, carrotAmount)) {
+                        player10.getInventory().removeItem(carrotStack);
+                        Economy economy = new Economy(player10, sellValue10);
+                        economy.addBalance();
+                        player10.sendMessage(ChatColor.GREEN + "Hai venduto 16 Carote con successo per "+ sellValue10 + "$!");
+                    } else {
+                        player10.sendMessage(ChatColor.RED + "Non hai abbastanza Carote da vendere!");
+                    }
+                    break;
+                case 23:
+                    Player player11 = (Player) event.getWhoClicked();
+                    int potatoAmount = 16;
+                    double sellValue11 = 35;
+                    ItemStack potatoStack = new ItemStack(Material.POTATO, potatoAmount);
+                    if (player11.getInventory().containsAtLeast(potatoStack, potatoAmount)) {
+                        player11.getInventory().removeItem(potatoStack);
+                        Economy economy = new Economy(player11, sellValue11);
+                        economy.addBalance();
+                        player11.sendMessage(ChatColor.GREEN + "Hai venduto 16 Patate con successo per "+ sellValue11 + "$!");
+                    } else {
+                        player11.sendMessage(ChatColor.RED + "Non hai abbastanza Patate da vendere!");
+                    }
+                    break;
+                case 25:
+                    Player player12 = (Player) event.getWhoClicked();
+                    int sugarCaneAmount = 16;
+                    double sellValue12 = 45;
+                    ItemStack sugarCaneStack = new ItemStack(Material.SUGAR_CANE, sugarCaneAmount);
+                    if (player12.getInventory().containsAtLeast(sugarCaneStack, sugarCaneAmount)) {
+                        player12.getInventory().removeItem(sugarCaneStack);
+                        Economy economy = new Economy(player12, sellValue12);
+                        economy.addBalance();
+                        player12.sendMessage(ChatColor.GREEN + "Hai venduto 16 Canne da Zucchero con successo per "+ sellValue12 + "$!");
+                    } else {
+                        player12.sendMessage(ChatColor.RED + "Non hai abbastanza Canne da Zucchero da vendere!");
+                    }
+                    break;
+                case 27:
+                    Player player13 = (Player) event.getWhoClicked();
+                    int boneAmount = 8;
+                    double sellValue13 = 60;
+                    ItemStack boneStack = new ItemStack(Material.BONE, boneAmount);
+                    if (player13.getInventory().containsAtLeast(boneStack, boneAmount)) {
+                        player13.getInventory().removeItem(boneStack);
+                        Economy economy = new Economy(player13, sellValue13);
+                        economy.addBalance();
+                        player13.sendMessage(ChatColor.GREEN + "Hai venduto 8 Ossa con successo per "+ sellValue13 + "$!");
+                    } else {
+                        player13.sendMessage(ChatColor.RED + "Non hai abbastanza Ossa da vendere!");
+                    }
+                    break;
+                case 29:
+                    Player player14 = (Player) event.getWhoClicked();
+                    int rottenFleshAmount = 8;
+                    double sellValue14 = 60;
+                    ItemStack rottenFleshStack = new ItemStack(Material.ROTTEN_FLESH, rottenFleshAmount);
+                    if (player14.getInventory().containsAtLeast(rottenFleshStack, rottenFleshAmount)) {
+                        player14.getInventory().removeItem(rottenFleshStack);
+                        Economy economy = new Economy(player14, sellValue14);
+                        economy.addBalance();
+                        player14.sendMessage(ChatColor.GREEN + "Hai venduto 8 Carne Marcia con successo per "+ sellValue14 + "$!");
+                    } else {
+                        player14.sendMessage(ChatColor.RED + "Non hai abbastanza Carne Marcia da vendere!");
+                    }
+                    break;
+                case 31:
+                    Player player15 = (Player) event.getWhoClicked();
+                    int spiderEyeAmount = 8;
+                    double sellValue15 = 60;
+                    ItemStack spiderEyeStack = new ItemStack(Material.SPIDER_EYE, spiderEyeAmount);
+                    if (player15.getInventory().containsAtLeast(spiderEyeStack, spiderEyeAmount)) {
+                        player15.getInventory().removeItem(spiderEyeStack);
+                        Economy economy = new Economy(player15, sellValue15);
+                        economy.addBalance();
+                        player15.sendMessage(ChatColor.GREEN + "Hai venduto 8 Occhi di Ragno con successo per "+ sellValue15 + "$!");
+                    } else {
+                        player15.sendMessage(ChatColor.RED + "Non hai abbastanza Occhi di Ragno da vendere!");
+                    }
+                    break;
+                case 33:
+                    Player player16 = (Player) event.getWhoClicked();
+                    int stringAmount = 8;
+                    double sellValue16 = 60;
+                    ItemStack stringStack = new ItemStack(Material.STRING, stringAmount);
+                    if (player16.getInventory().containsAtLeast(stringStack, stringAmount)) {
+                        player16.getInventory().removeItem(stringStack);
+                        Economy economy = new Economy(player16, sellValue16);
+                        economy.addBalance();
+                        player16.sendMessage(ChatColor.GREEN + "Hai venduto 8 Stringhe con successo per "+ sellValue16 + "$!");
+                    } else {
+                        player16.sendMessage(ChatColor.RED + "Non hai abbastanza Stringhe da vendere!");
+                    }
+                    break;
+            }
+        }
+    }
+}
