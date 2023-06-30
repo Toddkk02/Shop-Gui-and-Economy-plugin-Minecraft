@@ -1,0 +1,279 @@
+package Event;
+
+import Eco.Economy;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.List;
+
+public class OnbuyGui implements Listener {
+    private Economy economy;
+
+
+    public OnbuyGui() {
+       
+        this.economy = new Economy(null, 10.0);
+    }
+
+    @EventHandler
+    public void onSell(InventoryClickEvent event) {
+        if (event.getCurrentItem() == null) {
+            return;
+        }
+        if (!(event.getWhoClicked() instanceof Player)) {
+            return;
+        }
+        if (event.getClickedInventory().getTitle().equalsIgnoreCase(ChatColor.DARK_PURPLE + "COMPRA I PRODOTTI")) {
+            //prevent player to collect the items
+            event.setCancelled(true);
+            //logic of buying all the item in shop
+            switch (event.getSlot()) {
+                case 1:
+                    Player player1 = (Player) event.getWhoClicked();
+                    double buyValue1 = 120;
+
+                    Economy economy1 = new Economy(player1, buyValue1);
+                    if (economy1.isDetractable()) {
+                        economy1.takeBalance();
+                        player1.getInventory().addItem(new ItemStack(Material.COBBLESTONE, 64));
+                        player1.sendMessage(ChatColor.GREEN + "Hai comprato 64 blocchi di Pietrisco con successo per " + buyValue1 + "!");
+                    } else {
+                        player1.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare il pietrisco!");
+                    }
+                    break;
+
+                case 3:
+                    Player player2 = (Player) event.getWhoClicked();
+                    double buyValue2 = 75;
+
+                    Economy economy2 = new Economy(player2, buyValue2);
+                    if (economy2.isDetractable()) {
+                        economy2.takeBalance();
+                        player2.getInventory().addItem(new ItemStack(Material.DIRT, 64));
+                        player2.sendMessage(ChatColor.GREEN + "Hai comprato 64 blocchi di Terra con successo per " + buyValue2 + "!");
+                    } else {
+                        player2.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare la terra!");
+                    }
+                    break;
+
+                case 5:
+                    Player player3 = (Player) event.getWhoClicked();
+                    double buyValue3 = 300;
+
+                    Economy economy3 = new Economy(player3, buyValue3);
+                    if (economy3.isDetractable()) {
+                        economy3.takeBalance();
+                        player3.getInventory().addItem(new ItemStack(Material.STONE, 64));
+                        player3.sendMessage(ChatColor.GREEN + "Hai comprato 64 blocchi di Pietra con successo per " + buyValue3 + "!");
+                    } else {
+                        player3.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare la pietra!");
+                    }
+                    break;
+
+                // Aggiungi gli altri casi per gli altri elementi
+                case 7:
+                    Player player4 = (Player) event.getWhoClicked();
+                    double buyValue4 = 700;
+
+                    Economy economy4 = new Economy(player4, buyValue4);
+                    if (economy4.isDetractable()) {
+                        economy4.takeBalance();
+                        player4.getInventory().addItem(new ItemStack(Material.IRON_INGOT, 16));
+                        player4.sendMessage(ChatColor.GREEN + "Hai comprato 16 lingotti di Ferro con successo per " + buyValue4 + "!");
+                    } else {
+                        player4.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare il ferro!");
+                    }
+                    break;
+
+                case 9:
+                    Player player5 = (Player) event.getWhoClicked();
+                    double buyValue5 = 800;
+
+                    Economy economy5 = new Economy(player5, buyValue5);
+                    if (economy5.isDetractable()) {
+                        economy5.takeBalance();
+                        player5.getInventory().addItem(new ItemStack(Material.GOLD_INGOT, 16));
+                        player5.sendMessage(ChatColor.GREEN + "Hai comprato 16 lingotti di Oro con successo per " + buyValue5 + "!");
+                    } else {
+                        player5.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare l'oro!");
+                    }
+                    break;
+
+                case 11:
+                    Player player6 = (Player) event.getWhoClicked();
+                    double buyValue6 = 650;
+
+                    Economy economy6 = new Economy(player6, buyValue6);
+                    if (economy6.isDetractable()) {
+                        economy6.takeBalance();
+                        player6.getInventory().addItem(new ItemStack(Material.REDSTONE, 16));
+                        player6.sendMessage(ChatColor.GREEN + "Hai comprato 16 polveri di Redstone con successo per " + buyValue6 + "!");
+                    } else {
+                        player6.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare la redstone!");
+                    }
+                    break;
+
+                case 13:
+                    Player player7 = (Player) event.getWhoClicked();
+                    double buyValue7 = 1200;
+
+                    Economy economy7 = new Economy(player7, buyValue7);
+                    if (economy7.isDetractable()) {
+                        economy7.takeBalance();
+                        player7.getInventory().addItem(new ItemStack(Material.DIAMOND, 8));
+                        player7.sendMessage(ChatColor.GREEN + "Hai comprato 8 diamanti con successo per " + buyValue7 + "!");
+                    } else {
+                        player7.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare i diamanti!");
+                    }
+                    break;
+
+                case 15:
+                    Player player8 = (Player) event.getWhoClicked();
+                    double buyValue8 = 1600;
+
+                    Economy economy8 = new Economy(player8, buyValue8);
+                    if (economy8.isDetractable()) {
+                        economy8.takeBalance();
+                        player8.getInventory().addItem(new ItemStack(Material.EMERALD, 8));
+                        player8.sendMessage(ChatColor.GREEN + "Hai comprato 8 smeraldi con successo per " + buyValue8 + "!");
+                    } else {
+                        player8.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare gli smeraldi!");
+                    }
+                    break;
+
+                case 17:
+                    Player player9 = (Player) event.getWhoClicked();
+                    double buyValue9 = 100;
+
+                    Economy economy9 = new Economy(player9, buyValue9);
+                    if (economy9.isDetractable()) {
+                        economy9.takeBalance();
+                        player9.getInventory().addItem(new ItemStack(Material.CACTUS, 16));
+                        player9.sendMessage(ChatColor.GREEN + "Hai comprato 16 cactus con successo per " + buyValue9 + "!");
+                    } else {
+                        player9.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare i cactus!");
+                    }
+                    break;
+
+                case 19:
+                    Player player10 = (Player) event.getWhoClicked();
+                    double buyValue10 = 75;
+
+                    Economy economy10 = new Economy(player10, buyValue10);
+                    if (economy10.isDetractable()) {
+                        economy10.takeBalance();
+                        player10.getInventory().addItem(new ItemStack(Material.WHEAT, 16));
+                        player10.sendMessage(ChatColor.GREEN + "Hai comprato 16 grano con successo per " + buyValue10 + "!");
+                    } else {
+                        player10.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare il grano!");
+                    }
+                    break;
+
+                case 21:
+                    Player player11 = (Player) event.getWhoClicked();
+                    double buyValue11 = 75;
+
+                    Economy economy11 = new Economy(player11, buyValue11);
+                    if (economy11.isDetractable()) {
+                        economy11.takeBalance();
+                        player11.getInventory().addItem(new ItemStack(Material.CARROT, 16));
+                        player11.sendMessage(ChatColor.GREEN + "Hai comprato 16 carote con successo per " + buyValue11 + "!");
+                    } else {
+                        player11.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare le carote!");
+                    }
+                    break;
+
+                case 23:
+                    Player player12 = (Player) event.getWhoClicked();
+                    double buyValue12 = 75;
+
+                    Economy economy12 = new Economy(player12, buyValue12);
+                    if (economy12.isDetractable()) {
+                        economy12.takeBalance();
+                        player12.getInventory().addItem(new ItemStack(Material.POTATO, 16));
+                        player12.sendMessage(ChatColor.GREEN + "Hai comprato 16 patate con successo per " + buyValue12 + "!");
+                    } else {
+                        player12.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare le patate!");
+                    }
+                    break;
+
+                case 25:
+                    Player player13 = (Player) event.getWhoClicked();
+                    double buyValue13 = 80;
+
+                    Economy economy13 = new Economy(player13, buyValue13);
+                    if (economy13.isDetractable()) {
+                        economy13.takeBalance();
+                        player13.getInventory().addItem(new ItemStack(Material.SUGAR_CANE, 16));
+                        player13.sendMessage(ChatColor.GREEN + "Hai comprato 16 canne da zucchero con successo per " + buyValue13 + "!");
+                    } else {
+                        player13.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare le canne da zucchero!");
+                    }
+                    break;
+
+                case 27:
+                    Player player14 = (Player) event.getWhoClicked();
+                    double buyValue14 = 120;
+
+                    Economy economy14 = new Economy(player14, buyValue14);
+                    if (economy14.isDetractable()) {
+                        economy14.takeBalance();
+                        player14.getInventory().addItem(new ItemStack(Material.BONE, 8));
+                        player14.sendMessage(ChatColor.GREEN + "Hai comprato 8 ossa con successo per " + buyValue14 + "!");
+                    } else {
+                        player14.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare le ossa!");
+                    }
+                    break;
+
+                case 29:
+                    Player player15 = (Player) event.getWhoClicked();
+                    double buyValue15 = 100;
+
+                    Economy economy15 = new Economy(player15, buyValue15);
+                    if (economy15.isDetractable()) {
+                        economy15.takeBalance();
+                        player15.getInventory().addItem(new ItemStack(Material.ROTTEN_FLESH, 8));
+                        player15.sendMessage(ChatColor.GREEN + "Hai comprato 8 carne marcia con successo per " + buyValue15 + "!");
+                    } else {
+                        player15.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare la carne marcia!");
+                    }
+                    break;
+
+                case 31:
+                    Player player16 = (Player) event.getWhoClicked();
+                    double buyValue16 = 100;
+
+                    Economy economy16 = new Economy(player16, buyValue16);
+                    if (economy16.isDetractable()) {
+                        economy16.takeBalance();
+                        player16.getInventory().addItem(new ItemStack(Material.SPIDER_EYE, 8));
+                        player16.sendMessage(ChatColor.GREEN + "Hai comprato 8 occhi di ragno con successo per " + buyValue16 + "!");
+                    } else {
+                        player16.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare gli occhi di ragno!");
+                    }
+                    break;
+
+                case 33:
+                    Player player17 = (Player) event.getWhoClicked();
+                    double buyValue17 = 110;
+
+                    Economy economy17 = new Economy(player17, buyValue17);
+                    if (economy17.isDetractable()) {
+                        economy17.takeBalance();
+                        player17.getInventory().addItem(new ItemStack(Material.STRING, 8));
+                        player17.sendMessage(ChatColor.GREEN + "Hai comprato 8 stringhe con successo per " + buyValue17 + "!");
+                    } else {
+                        player17.sendMessage(ChatColor.RED + "Non hai abbastanza soldi per comprare le stringhe!");
+                    }
+                    break;
+            }
+        }
+            }
+
+
+            }
